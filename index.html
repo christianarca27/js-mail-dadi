@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Mail Dadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="container">
-        <label for="email-input">Email:</label>
-        <input type="email" name="email-input" id="email-input">
-        <button id="btn-login">Login</button>
+        <h1>JS Email Dadi</h1>
 
-        <div id="game-table"></div>
+        <div id="input-box">
+            <label for="email-input">Email:</label>
+            <input type="email" name="email-input" id="email-input">
+            <button id="btn-login">Gioca</button>
+        </div>
+
+        <div id="message"></div>
+
+        <div id="game-table">
+            <div id="game-table-player">
+                <span>Dado giocatore:</span>
+                <i id="player-dice" class=""></i>
+            </div>
+            <div id="game-table-computer">
+                <span>Dado computer:</span>
+                <i id="computer-dice" class=""></i>
+            </div>
+        </div>
+
+        <div id="result"></div>
     </div>
     
     <script src="js/script.js"></script>
