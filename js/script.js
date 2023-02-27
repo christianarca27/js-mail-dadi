@@ -7,7 +7,8 @@ let buttonLoginEl = document.getElementById("btn-login");
 // Aggiungo un evento in caso il pulsante di inizio gioco venga cliccato
 buttonLoginEl.addEventListener("click", function() {
     // Leggo e salvo il valore inserito nel campo email al momento del click
-    emailInput = document.getElementById("email-input").value;
+    emailInputEl = document.getElementById("email-input")
+    emailInput = emailInputEl.value;
 
     // - Inizializzo accessoConsentito a false
     // - Confronto uno ad uno gli elementi dell'array per controllare se è presente l'email inserita dall'utente
@@ -19,6 +20,8 @@ buttonLoginEl.addEventListener("click", function() {
         }
     }
 
+    let gameEl = document.getElementById("game-table");
+
     // - Se il valore di accessoConsentito è stato cambiato in true durante il ciclo:
     //      # Estraggo un numero random per il giocatore
     //      # Estraggo un numero random per il computer
@@ -27,25 +30,33 @@ buttonLoginEl.addEventListener("click", function() {
     // - Altrimenti:
     //      # Comunico che l'accesso è fallito
     if(accessoConsentito) {
-        console.log("Giochiamo !");
+        gameEl.style.color = "black";
+        gameEl.innerHTML = "Accesso consentito, giochiamo.. <br>";
 
         let lancioGiocatore = Math.ceil(Math.random() * 6);
-        console.log("Numero giocatore: " + lancioGiocatore);
 
         let lancioComputer = Math.ceil(Math.random() * 6);
-        console.log("Numero computer: " + lancioComputer);
 
         if(lancioGiocatore > lancioComputer) {
-            console.log("Hai vinto !");
+            gameEl.innerHTML += "Hai vinto !<br>";
+            gameEl.innerHTML += "Dado giocatore : " + lancioGiocatore + "<br>";
+            gameEl.innerHTML += "Dado computer : " + lancioComputer;
         }
         else if(lancioGiocatore == lancioComputer) {
-            console.log("Pareggio");
+            gameEl.innerHTML += "Pareggio !<br>";
+            gameEl.innerHTML += "Dado giocatore : " + lancioGiocatore + "<br>";
+            gameEl.innerHTML += "Dado computer : " + lancioComputer;
         }
         else {
-            console.log("Hai perso !");
+            gameEl.innerHTML += "Hai perso !<br>";
+            gameEl.innerHTML += "Dado giocatore : " + lancioGiocatore + "<br>";
+            gameEl.innerHTML += "Dado computer : " + lancioComputer;
         }
     }
     else {
-        console.log("Accesso negato");
+        gameEl.style.color = "red";
+        gameEl.innerHTML = "Accesso negato, email non valida.";
     }
+    // Svuoto il campo di email per poter iniziare una nuova partita
+    emailInputEl.value = "";
 });
